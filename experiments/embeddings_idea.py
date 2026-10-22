@@ -1,4 +1,4 @@
-print("STEP 8 RUNNING")
+print("STEP 9 RUNNING")
 
 from sentence_transformers import SentenceTransformer, util
 
@@ -10,7 +10,7 @@ guides = [
     "To install approved software, open the Software Centre and click Install next to the app.",
 ]
 
-question = "I can't get online"
+question = "How do I reset my password"
 
 guide_vectors = model.encode(guides)
 question_vector = model.encode(question)
