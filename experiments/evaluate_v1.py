@@ -1,4 +1,4 @@
-print("STEP 16 RUNNING")
+print("STEP 17 RUNNING")
 
 import csv
 from sentence_transformers import SentenceTransformer, util
@@ -20,6 +20,9 @@ with open("tests/test_questions.csv", encoding="utf-8") as f:
     rows = list(csv.DictReader(f))
 
 correct = 0
+wrong_answer = 0
+over_escalated = 0
+
 for row in rows:
     question_vector = model.encode(row["question"])
     scores = util.cos_sim(question_vector, chunk_vectors)[0]
@@ -35,11 +38,17 @@ for row in rows:
         answer = titles[best_index]
 
     expected = row["expected"].strip()
-    passed = answer == expected
-    if passed:
-        correct += 1
 
-    result = "PASS" if passed else "FAIL"
+    if answer == expected:
+        result = "PASS"
+        correct += 1
+    elif answer == "escalate":
+        result = "OVER-ESCALATED"
+        over_escalated += 1
+    else:
+        result = "WRONG ANSWER"
+        wrong_answer += 1
+
     print(result, row["id"], row["type"], round(best_score, 2), "gap", round(gap, 2), "| got:", answer, "| expected:", expected)
 
-print(correct, "of", len(rows), "correct")
+print("Correct:", correct, "| Wrong answer served:", wrong_answer, "| Over-escalated:", over_escalated, "of", len(rows))

@@ -9,3 +9,8 @@
 - IT Service Desk: ticket via the helpdesk assistant, or ext. 5111, 8am to 6pm weekdays
 - Rule: IT staff never ask for passwords or MFA codes
 - Changing a known password: Account settings > Change password on the Northwind Portal.
+- Office Wi-Fi network: Northwind-Staff (for employees), Northwind-Guest (for visitors, no access to internal systems)
+- Wi-Fi sign-in: work email and password
+- Wi-Fi not connecting: turn Wi-Fi off and on, forget the network and reconnect, then restart the device
+- Wi-Fi speed or drops: move closer to an access point, then raise a ticket if it continues
+- Guest Wi-Fi: reception provides a daily code
