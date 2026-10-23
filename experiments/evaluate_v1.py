@@ -1,16 +1,25 @@
-print("STEP 17 RUNNING")
+print("STEP 19 RUNNING")
 
 import csv
 from sentence_transformers import SentenceTransformer, util
 
 THRESHOLD = 0.25
-GAP_MIN = 0.07
+GAP_MIN = 0.0
 
-# Load the guide and split it into chunks (same as before)
-with open("knowledge_base/password-reset.md", encoding="utf-8") as f:
-    text = f.read()
-chunks = text.split("\n## ")[1:]
-titles = [chunk.split("\n")[0].strip() for chunk in chunks]
+import glob
+
+chunks = []
+titles = []
+for path in sorted(glob.glob("knowledge_base/*.md")):
+    if path.endswith("system-facts.md"):
+        continue
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    for chunk in text.split("\n## ")[1:]:
+        chunks.append(chunk)
+        titles.append(chunk.split("\n")[0].strip())
+
+print("Chunks loaded:", len(chunks))
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 chunk_vectors = model.encode(chunks)

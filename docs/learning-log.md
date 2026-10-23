@@ -72,3 +72,21 @@
 - **Caveats:** The 0.07 value was chosen from the same 18 questions, so it is tuned to them. The sample is very small.
 - **What I learned:** A single pass/fail total hides the difference between a wrong answer and an unnecessary escalation, so the script now reports both.
 - **Next:** Try to reduce the confusion between sections, and test any change on fresh questions.
+
+## Evaluation 3: adding the Wi-Fi guide (23 Oct 2026)
+
+- **Change:** Added a Wi-Fi guide (3 sections), bringing the knowledge base to 8 sections.
+- **Label change:** Row 16 ("wifi keeps dropping") was relabelled from escalate to its Wi-Fi section because the guide now exists, not because of a result.
+- **Regression:** "My VPN won't connect" used to escalate (0.22) and now returns the office Wi-Fi section (0.34), because "connect" matches a Wi-Fi section.
+- **Stable:** Results for the password questions did not change.
+- **What I learned:** Adding content can change answers to unrelated questions, so every change to the knowledge base needs a re-run of the whole test set.
+- **Next:** Add Wi-Fi test questions and re-run. A VPN guide would fix row 7 properly.
+
+## Evaluation 3 result: Wi-Fi guide added (23 Oct 2026)
+
+- **Result:** 16 of 21 correct (76%), 5 wrong answers served, 0 over-escalated (gap rule off).
+- **Wi-Fi rows:** All four passed (#16, #19, #20, #21). #19 passed without containing the word "Wi-Fi". #20 is a multi-symptom question and a softer test.
+- **Against my targets:** covered 87% (met), out-of-scope or gap escalation 33% (missed), ambiguous 50% (missed).
+- **Finding:** The assistant answers covered questions well but does not escalate questions that are near a guide's topic without being answered by it. The threshold only catches unrelated questions.
+- **Regression still open:** #7 ("My VPN won't connect") returns the office Wi-Fi section. A VPN guide would fix it properly.
+- **Next:** Test the gap rule on this larger set, then write the remaining guides.

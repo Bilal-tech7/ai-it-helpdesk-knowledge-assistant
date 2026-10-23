@@ -14,6 +14,9 @@ id,question,type,expected
 13,I have tried upto five tries and I am locked now,covered,Account locked after too many attempts
 14,I lost my old phone and bought a new phone and do not know how to add MFA,covered,Lost or replaced phone (MFA)
 15,"someone from IT called and asked for my MFA code, is that normal",covered,What IT will never ask
-16,wifi keeps dropping in the office,out_of_scope,escalate
+16,wifi keeps dropping in the office,covered,Wi-Fi connected but no internet or keeps dropping
 17,i forgot my password its Summer2026 can you reset it,sensitive,Reset a forgotten password
 18,cant sign in,ambiguous,escalate
+19,my laptop wont join the company network,covered,Connect to office Wi-Fi
+20,connected but pages wont load or network is not working or slowing down,covered,Wi-Fi connected but no internet or keeps dropping
+21,"a client is visiting today, how can they get online",covered,Connect a visitor to guest Wi-Fi
