@@ -15,3 +15,41 @@
 - **Next:** Try meaning-based search (embeddings), so that "online" and "Wi-Fi" can match even without shared words.
 
 - **Note for later:** In a real system, access control would decide who can see which guides.
+
+## Retrieval experiment 2: embeddings with a threshold (22 Oct 2026)
+
+- **What I built:** A retriever that uses a sentence-transformers embedding model (all-MiniLM-L6-v2) to compare a question with each guide by meaning, not by shared words. It picks the highest-scoring guide, and escalates to a ticket if the best score is below a threshold.
+
+- **What an embedding does:** It turns a piece of text into a list of numbers, like a spot on a map, so that texts with similar meanings sit close together. The model learned this from a large amount of text, so I don't set the numbers by hand. A similarity score then measures how close the question is to each guide.
+
+- **Results:**
+  - "How do I reset my password": 0.73, correct guide, far ahead of the others.
+  - "My laptop can't connect to the internet": 0.29, Wi-Fi guide correctly on top. This question also shares the word "connect" with the guide, so it is not a pure test of meaning.
+  - "What's the best pizza in Sydney": -0.03, no relevant guide.
+  - "I can't get online": 0.18 for the password guide, 0.14 for the Wi-Fi guide and 0.12 for the software guide. All were low and close together, and the wrong guide was on top.
+
+- **Why I think wording mattered:** "I can't get online" is short and vague, and the model was not confident about any guide. A clearer question scored much higher for the right guide. I am not certain this is the whole reason, so I should test more phrasings.
+
+- **Threshold:** I set it at 0.25. Before the threshold, "I can't get online" returned the password guide, a confident wrong answer. With the threshold it escalates instead. That is still a mistake, because a Wi-Fi guide exists, but it is a safe one.
+
+- **Why a wrong escalation is safer than a wrong answer:** An escalated user reaches a human and nobody is misled. A wrong answer sends the user down a wrong path and may cause harm or make them more frustrated.
+
+- **Limitation:** 0.25 fits my four examples, but one of them (0.29) clears it by only a small margin, so four questions cannot justify the number. I will choose the threshold using my 30-50 test questions and report how I chose it.
+
+- **Next:** Write the five topic guides, split them into chunks, and search all of them. Then build the test question set.
+
+## Retrieval experiment 3: searching the real guide (23 Oct 2026)
+
+- **Clear questions worked:** "I forgot my password", "I'm locked out" and "new phone, can't approve sign-ins" scored 0.54 to 0.59 and found the right section. Pizza scored 0.01 and escalated.
+
+- **Near-misses failed:** "set up MFA on a second phone" scored 0.56 and returned the lost-phone section, which does not answer it. "Change my password before it expires" scored 0.50 and returned the forgotten-password section, which has no steps for it.
+
+- **Finding:** Right answers (0.54 to 0.59) and plausible-but-wrong answers (0.50 to 0.56) overlap, so a threshold alone cannot separate them.
+
+- **Fix:** I added a "Change your password before it expires" section. The question that previously returned the wrong section (0.50) now returns the correct one (0.65). Some retrieval failures are gaps in the knowledge base, not the model.
+
+- **Paraphrase tests:** "I need to update my password, I still know the old one" found the right section (0.55) but only just ahead of the runner-up (0.52). "My password is about to run out" returned the lockout section (0.50), which is wrong, because the guide says "expires" and the user said "run out".
+
+- **What I think this means for my project:** The similarity score shows how related the topic is, not whether the section answers the question. I need to check answers against expected sections in a test set, not trust the score.
+
+- **What I would try next:** Build a test set with expected answers, then measure whether changes help. Also test whether a small gap between the top two scores can flag likely failures.

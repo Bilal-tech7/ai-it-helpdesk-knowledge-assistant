@@ -13,7 +13,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 chunk_vectors = model.encode(chunks)
 
 THRESHOLD = 0.25
-question = "It's not working"
+question = "My password is about to run out"
 
 question_vector = model.encode(question)
 scores = util.cos_sim(question_vector, chunk_vectors)[0]

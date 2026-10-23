@@ -10,6 +10,14 @@ If you can't remember your Northwind password or can't sign in to your account, 
 
 If you don't receive the approval request or the reset fails, raise a ticket through the helpdesk assistant or call the IT Service Desk on ext. 5111 (8am to 6pm, weekdays).
 
+## Change your password before it expires
+Northwind passwords must be changed every 90 days. If you remember your current password and want to change it, you don't need to reset it.
+1. Sign in to the Northwind Portal.
+2. Open **Account settings** and select **Change password**.
+3. Enter your current password, then choose a new one with at least 12 characters.
+
+If you can't sign in or the change fails, raise a ticket through the helpdesk assistant or call the IT Service Desk on ext. 5111 (8am to 6pm, weekdays).
+
 ## Account locked after too many attempts
 If you're locked out of your Northwind account because you entered the wrong password too many times, the lock is temporary.
 1. Stop trying to sign in. Your account locks after 5 wrong password attempts.

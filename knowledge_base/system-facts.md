@@ -1,0 +1,11 @@
+# Northwind Logistics: fictional system facts
+- Sign-in page: Northwind Portal
+- Work account: firstname.lastname@northwind.example
+- MFA app: Northwind Authenticator (on the employee's phone)
+- Lockout rule: account locks after 5 wrong password attempts, and unlocks by itself after 30 minutes
+- Password rules: at least 12 characters, changed every 90 days
+- Self-service reset: "Forgot password" link on the portal, needs MFA approval
+- No backup sign-in method: lost phone means IT verifies identity and resets MFA
+- IT Service Desk: ticket via the helpdesk assistant, or ext. 5111, 8am to 6pm weekdays
+- Rule: IT staff never ask for passwords or MFA codes
+- Changing a known password: Account settings > Change password on the Northwind Portal.
