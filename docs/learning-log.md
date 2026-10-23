@@ -62,3 +62,13 @@
 - **Against my targets:** covered 82% (met), not-in-guide escalation 75% (missed), ambiguous 50% (missed), sensitive-data repetition not yet tested.
 - **Caveat:** very small groups, and the set contains known failures, so this is a baseline, not a final score.
 - **Next:** test whether a small gap between the top two scores flags likely failures.
+
+## Evaluation 2: testing a gap rule (23 Oct 2026)
+
+- **Hypothesis:** Wrong answers tend to win by a small margin over the runner-up, so escalating when the gap is small might catch them.
+- **Evidence:** Three of four wrong answers had gaps of 0.06 or less, but two correct answers also had small gaps (0.04 and 0.03), and one wrong answer (#5, a missing section) had a gap of 0.16.
+- **Result with gap rule 0.07:** 13 of 18 correct (down from 14). Wrong answers served fell from 4 to 1, but 4 questions were over-escalated.
+- **Trade-off:** Fewer risky answers, but covered-question accuracy fell from 82% to 64%, below my 80% target.
+- **Caveats:** The 0.07 value was chosen from the same 18 questions, so it is tuned to them. The sample is very small.
+- **What I learned:** A single pass/fail total hides the difference between a wrong answer and an unnecessary escalation, so the script now reports both.
+- **Next:** Try to reduce the confusion between sections, and test any change on fresh questions.

@@ -1,9 +1,10 @@
-print("STEP 15 RUNNING")
+print("STEP 16 RUNNING")
 
 import csv
 from sentence_transformers import SentenceTransformer, util
 
 THRESHOLD = 0.25
+GAP_MIN = 0.07
 
 # Load the guide and split it into chunks (same as before)
 with open("knowledge_base/password-reset.md", encoding="utf-8") as f:
@@ -28,7 +29,7 @@ for row in rows:
     sorted_scores = sorted((float(s) for s in scores), reverse=True)
     gap = sorted_scores[0] - sorted_scores[1]
 
-    if best_score < THRESHOLD:
+    if best_score < THRESHOLD or gap < GAP_MIN:
         answer = "escalate"
     else:
         answer = titles[best_index]
