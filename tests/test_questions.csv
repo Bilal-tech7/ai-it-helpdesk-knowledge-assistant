@@ -1,0 +1,11 @@
+id,question,type,expected
+1,I forgot my password,covered,Reset a forgotten password
+2,I'm locked out of my account,covered,Account locked after too many attempts
+3,I got a new phone and can't approve sign-ins,covered,Lost or replaced phone (MFA)
+4,What's the best pizza in Sydney,out_of_scope,escalate
+5,How do I set up MFA on a second phone,covered_gap,escalate
+6,How do I change my password before it expires,covered,Change your password before it expires
+7,My VPN won't connect,out_of_scope,escalate
+8,It's not working,ambiguous,escalate
+9,I need to update my password and I still know the old one,covered,Change your password before it expires
+10,My password is about to run out,covered,Change your password before it expires
