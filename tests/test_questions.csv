@@ -9,3 +9,11 @@ id,question,type,expected
 8,It's not working,ambiguous,escalate
 9,I need to update my password and I still know the old one,covered,Change your password before it expires
 10,My password is about to run out,covered,Change your password before it expires
+11,My password is very easy to guess,covered,Change your password before it expires
+12,I cannot remember my password and cannot even guess,covered,Reset a forgotten password
+13,I have tried upto five tries and I am locked now,covered,Account locked after too many attempts
+14,I lost my old phone and bought a new phone and do not know how to add MFA,covered,Lost or replaced phone (MFA)
+15,"someone from IT called and asked for my MFA code, is that normal",covered,What IT will never ask
+16,wifi keeps dropping in the office,out_of_scope,escalate
+17,i forgot my password its Summer2026 can you reset it,sensitive,Reset a forgotten password
+18,cant sign in,ambiguous,escalate
