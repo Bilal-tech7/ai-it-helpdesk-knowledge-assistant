@@ -53,3 +53,12 @@
 - **What I think this means for my project:** The similarity score shows how related the topic is, not whether the section answers the question. I need to check answers against expected sections in a test set, not trust the score.
 
 - **What I would try next:** Build a test set with expected answers, then measure whether changes help. Also test whether a small gap between the top two scores can flag likely failures.
+
+## Evaluation 1: baseline on 18 questions (23 Oct 2026)
+
+- **Setup:** Embedding search (all-MiniLM-L6-v2), threshold 0.25, over the password guide, tested on 18 questions.
+- **Result:** 14 of 18 correct (78%).
+- **Failures:** #5 (guide gap), #10 ("run out" vs "expires"), #11 (weak password, label debatable) and #18 ("cant sign in", vague). All scored above the threshold, so no threshold setting would have caught them.
+- **Against my targets:** covered 82% (met), not-in-guide escalation 75% (missed), ambiguous 50% (missed), sensitive-data repetition not yet tested.
+- **Caveat:** very small groups, and the set contains known failures, so this is a baseline, not a final score.
+- **Next:** test whether a small gap between the top two scores flags likely failures.
