@@ -1,4 +1,4 @@
-print("STEP 14 RUNNING")
+print("STEP 15 RUNNING")
 
 import csv
 from sentence_transformers import SentenceTransformer, util
@@ -25,6 +25,9 @@ for row in rows:
     best_index = int(scores.argmax())
     best_score = float(scores[best_index])
 
+    sorted_scores = sorted((float(s) for s in scores), reverse=True)
+    gap = sorted_scores[0] - sorted_scores[1]
+
     if best_score < THRESHOLD:
         answer = "escalate"
     else:
@@ -36,6 +39,6 @@ for row in rows:
         correct += 1
 
     result = "PASS" if passed else "FAIL"
-    print(result, row["id"], row["type"], round(best_score, 2), "| got:", answer, "| expected:", expected)
+    print(result, row["id"], row["type"], round(best_score, 2), "gap", round(gap, 2), "| got:", answer, "| expected:", expected)
 
 print(correct, "of", len(rows), "correct")
