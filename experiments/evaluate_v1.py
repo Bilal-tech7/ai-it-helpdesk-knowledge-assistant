@@ -4,8 +4,8 @@ import csv
 from sentence_transformers import SentenceTransformer, util
 
 THRESHOLD = 0.25
-GAP_MIN = 0.0
-
+GAP_MIN = 0.07
+TEST_FILE = "tests/test_questions.csv"
 import glob
 
 chunks = []
@@ -25,7 +25,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 chunk_vectors = model.encode(chunks)
 
 # NEW: load the test questions
-with open("tests/test_questions.csv", encoding="utf-8") as f:
+with open(TEST_FILE, encoding="utf-8") as f:
     rows = list(csv.DictReader(f))
 
 correct = 0

@@ -90,3 +90,12 @@
 - **Finding:** The assistant answers covered questions well but does not escalate questions that are near a guide's topic without being answered by it. The threshold only catches unrelated questions.
 - **Regression still open:** #7 ("My VPN won't connect") returns the office Wi-Fi section. A VPN guide would fix it properly.
 - **Next:** Test the gap rule on this larger set, then write the remaining guides.
+
+## Evaluation 4: gap rule on 21 questions (23 Oct 2026)
+
+- **Result:** With the gap rule off: 16 correct, 5 wrong answers served, 0 over-escalated. With GAP_MIN = 0.07: 16 correct, 1 wrong answer served, 4 over-escalated.
+- **What changed:** #7 and #18 went from wrong to correct. #9 and #12 went from correct to over-escalated. #10 and #11 went from wrong to over-escalated. #5 stayed wrong because the guide has no section for it.
+- **Against targets (rule on):** covered 73% (missed), not-in-guide escalation 67% (missed, up from 33%), ambiguous 100% (met).
+- **Pattern:** All four over-escalations were password questions, probably because the password sections overlap and score close together. This is untested.
+- **Caveat:** 0.07 was chosen from earlier results, so this set is not a fair test of it.
+- **Next:** Run a holdout set of fresh questions once, with no tuning afterwards.
