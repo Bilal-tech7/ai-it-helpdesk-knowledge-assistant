@@ -99,3 +99,13 @@
 - **Pattern:** All four over-escalations were password questions, probably because the password sections overlap and score close together. This is untested.
 - **Caveat:** 0.07 was chosen from earlier results, so this set is not a fair test of it.
 - **Next:** Run a holdout set of fresh questions once, with no tuning afterwards.
+
+## Evaluation 5: holdout run (24 Oct 2026)
+
+- **Setup:** 8 fresh questions written by my supervisor after the gap rule was chosen (0.07). Run once.
+- **Result:** 5 correct, 1 wrong answer served, 2 over-escalated.
+- **Wi-Fi guide:** all holdout Wi-Fi questions passed.
+- **Gap rule:** missed the wrong answer (H7, gap 0.10) and escalated two covered questions (H1, H8). It did not help on this batch.
+- **Pattern:** All six over-escalations across both sets are password questions, and vague account questions (#18, H7) land on the lockout section.
+- **Caveat:** Only 8 questions, written by someone who knew the guides.
+- **Next:** Check whether the escalated top picks were correct, then decide what to change using fresh questions.

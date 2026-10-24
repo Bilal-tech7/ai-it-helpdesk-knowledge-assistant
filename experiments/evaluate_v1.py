@@ -1,11 +1,11 @@
-print("STEP 20 RUNNING")
+print("STEP 22 RUNNING")
 
 import csv
 from sentence_transformers import SentenceTransformer, util
 
 THRESHOLD = 0.25
 GAP_MIN = 0.07
-TEST_FILE = "tests/test_questions.csv"
+TEST_FILE = "tests/holdout_questions.csv"
 import glob
 
 chunks = []
@@ -20,6 +20,7 @@ for path in sorted(glob.glob("knowledge_base/*.md")):
         titles.append(chunk.split("\n")[0].strip())
 
 print("Chunks loaded:", len(chunks))
+print("Test file:", TEST_FILE)
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 chunk_vectors = model.encode(chunks)
@@ -58,6 +59,6 @@ for row in rows:
         result = "WRONG ANSWER"
         wrong_answer += 1
 
-    print(result, row["id"], row["type"], round(best_score, 2), "gap", round(gap, 2), "| got:", answer, "| expected:", expected)
+    print(result, row["id"], row["type"], round(best_score, 2), "gap", round(gap, 2), "| got:", answer, "| top:", titles[best_index], "| expected:", expected)
 
 print("Correct:", correct, "| Wrong answer served:", wrong_answer, "| Over-escalated:", over_escalated, "of", len(rows))

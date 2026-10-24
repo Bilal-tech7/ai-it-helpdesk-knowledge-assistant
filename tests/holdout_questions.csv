@@ -1,0 +1,9 @@
+id,question,type,expected
+H1,i keep typing the wrong password and now it says try later,covered,Account locked after too many attempts
+H2,my authenticator app disappeared when i got a new phone,covered,Lost or replaced phone (MFA)
+H3,internet is really slow on my laptop at my desk today,covered,Wi-Fi connected but no internet or keeps dropping
+H4,what network should a contractor use when they visit tomorrow,covered,Connect a visitor to guest Wi-Fi
+H5,how do i connect my printer,out_of_scope,escalate
+H6,need to install zoom on my work laptop,out_of_scope,escalate
+H7,my account is broken,ambiguous,escalate
+H8,forgot pasword cant login,covered,Reset a forgotten password
