@@ -101,11 +101,12 @@
 - **Next:** Run a holdout set of fresh questions once, with no tuning afterwards.
 
 ## Evaluation 5: holdout run (24 Oct 2026)
-
-- **Setup:** 8 fresh questions written by my supervisor after the gap rule was chosen (0.07). Run once.
-- **Result:** 5 correct, 1 wrong answer served, 2 over-escalated.
-- **Wi-Fi guide:** all holdout Wi-Fi questions passed.
-- **Gap rule:** missed the wrong answer (H7, gap 0.10) and escalated two covered questions (H1, H8). It did not help on this batch.
-- **Pattern:** All six over-escalations across both sets are password questions, and vague account questions (#18, H7) land on the lockout section.
+- **Setup:** 8 fresh questions written by my supervisor after the gap rule (0.07) was chosen. Run once, then diagnosed with a print of the top pick.
+- **Result:** 5 correct, 1 wrong answer served, 2 over-escalated. Without the gap rule it would have been 7 correct, 1 wrong, 0 over-escalated.
+- **H1 and H8:** the top pick was correct, and the gap rule escalated them because two password sections scored close together.
+- **H7 ("my account is broken"):** wrong answer served (lockout section, gap 0.10). Neither the threshold nor the gap rule catches it.
+- **H5 and H6:** wrong top pick (office Wi-Fi), caught by the 0.25 threshold.
+- **Conclusion:** The gap rule worked on the 21 questions it was tuned on but did not generalise (overfitting). Small gaps between overlapping sections of one guide do not mean a wrong answer.
+- **Decision:** Set GAP_MIN = 0.0 by default. This decision was made after seeing the holdout, so that holdout is now used and any further tuning needs fresh questions.
+- **Open problem:** Vague questions ("my account is broken", "cant sign in") land on the lockout section. Needs a different mechanism, such as asking a clarifying question.
 - **Caveat:** Only 8 questions, written by someone who knew the guides.
-- **Next:** Check whether the escalated top picks were correct, then decide what to change using fresh questions.

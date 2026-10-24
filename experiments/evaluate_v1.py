@@ -4,7 +4,7 @@ import csv
 from sentence_transformers import SentenceTransformer, util
 
 THRESHOLD = 0.25
-GAP_MIN = 0.07
+GAP_MIN = 0.0
 TEST_FILE = "tests/holdout_questions.csv"
 import glob
 
