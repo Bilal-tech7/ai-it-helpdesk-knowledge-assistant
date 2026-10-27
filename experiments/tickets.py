@@ -15,6 +15,18 @@ def _connect():
     """)
     return conn
 
+STATUSES = ["New", "In progress", "Resolved"]
+
+def update_status(ticket_id, status):
+    if status not in STATUSES:
+        return False
+    conn = _connect()
+    cur = conn.execute("UPDATE tickets SET status = ? WHERE id = ?", (status, ticket_id))
+    conn.commit()
+    changed = cur.rowcount
+    conn.close()
+    return changed == 1
+
 def redact(text):
     return re.sub(
         r"\b(password|passcode|pin|code)\s*(?:(?:is|its|it's)\b|[:=])\s*"

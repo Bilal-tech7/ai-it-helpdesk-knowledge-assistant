@@ -1,8 +1,8 @@
-print("STEP 33 RUNNING")
+print("STEP 34 RUNNING")
 
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template_string, redirect, url_for
 from assistant import ask
-from experiments.tickets import list_tickets
+from experiments.tickets import list_tickets, update_status, STATUSES
 
 app = Flask(__name__)
 
@@ -45,7 +45,16 @@ TICKETS_PAGE = """
   <tr>
     <td>{{ t[0] }}</td>
     <td>{{ t[1] }}</td>
-    <td>{{ t[2] }}</td>
+    <td>
+      <form method="post" action="/tickets/{{ t[0] }}/status">
+        <select name="status">
+          {% for s in statuses %}
+          <option value="{{ s }}" {% if s == t[2] %}selected{% endif %}>{{ s }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit">Update</button>
+      </form>
+    </td>
     <td>{{ t[3] }}</td>
   </tr>
   {% endfor %}
@@ -65,7 +74,12 @@ def home():
 
 @app.route("/tickets")
 def tickets():
-    return render_template_string(TICKETS_PAGE, tickets=list_tickets())
+    return render_template_string(TICKETS_PAGE, tickets=list_tickets(), statuses=STATUSES)
+
+@app.route("/tickets/<int:ticket_id>/status", methods=["POST"])
+def set_status(ticket_id):
+    update_status(ticket_id, request.form.get("status", ""))
+    return redirect(url_for("tickets"))
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
