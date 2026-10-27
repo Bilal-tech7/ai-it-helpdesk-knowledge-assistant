@@ -161,3 +161,13 @@
 - **Observed limit:** Junk input still creates tickets. Rate limiting and duplicate detection are future work.
 - **Note for the dashboard:** Ticket text is user-written, so it must be escaped when displayed to staff.
 - **Formatting:** Guide text is converted from Markdown to HTML and marked safe, which is only acceptable because the guides are written by the project owner.
+
+## Ticket dashboard and status updates (27 Oct 2026)
+
+- **Built:** A dashboard at /tickets listing every escalated question, with a status drop-down (New, In progress, Resolved) saved to the database.
+- **Security choices:** Ticket text is escaped when displayed, so a ticket containing HTML shows as plain text. The server only accepts statuses from a fixed list and only accepts changes through POST requests.
+- **Limitation 1:** There is no login, so anyone who can reach the page can read and change tickets. A real system would restrict this to IT staff.
+- **Limitation 2:** There is no protection against forged form submissions (CSRF).
+- **Limitation 3:** Junk input creates tickets, and there is no duplicate detection or rate limiting.
+- **Limitation 4:** Timestamps are stored in UTC and shown as UTC.
+- **Next:** Safety tests, a comparison against a plain FAQ search, and packaging the project for GitHub.
