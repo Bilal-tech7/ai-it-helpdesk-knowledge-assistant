@@ -130,3 +130,14 @@
 - **Against targets:** covered 89% (met), not-in-guide escalation 50% (missed, only two questions), ambiguous 50% (missed).
 - **Caveat:** The VPN section titles and test rows were written together, so the new passes are easier than fresh questions would be.
 - **Next:** Write the software and printing guides, then test on a fresh batch of questions.
+
+## Evaluation 7: all five topics written (27 Oct 2026)
+
+- **Change:** Added software and printing guides (5 sections), bringing the knowledge base to 16 sections and all five scope topics. Added rows 25 to 29.
+- **Result:** 24 of 29 correct (83%), 5 wrong answers served, 0 over-escalated (gap rule off).
+- **New regression:** #8 ("It's not working") used to escalate (0.22) and now returns the printer section (0.36), because the new guide gave the vague question something to match.
+- **Unchanged failures:** #5 (missing section), #10 and #11 (overlapping password sections, #11's label debatable), #18 (vague).
+- **Against targets:** covered 92% (met), not-in-guide escalation 50% (missed, only two questions), ambiguous 0% (missed).
+- **Pattern:** Vague questions get worse as the knowledge base grows, and a threshold does not fix it.
+- **Caveat:** The new test rows were written around the new sections, so they are easier than fresh questions.
+- **Next:** A fresh holdout that includes questions outside the five topics, then a mechanism for vague questions.
