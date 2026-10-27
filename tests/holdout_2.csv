@@ -1,0 +1,13 @@
+id,question,type,expected
+J1,cant remember my login password for the portal,covered,Reset a forgotten password
+J2,got a new iphone and the sign in approval wont come through,covered,Lost or replaced phone (MFA)
+J3,is it ok to give my mfa code to the guy from helpdesk who rang me,covered,What IT will never ask
+J4,wifi icon is on but websites wont open,covered,Wi-Fi connected but no internet or keeps dropping
+J5,cant reach the intranet while working from my kitchen,covered,Connect to the VPN from home
+J6,need slack on my laptop,covered,Install approved software
+J7,printer on level 2 isnt showing up on my laptop,covered,Connect to the office printer
+J8,how do i set up my work email on my phone,out_of_scope,escalate
+J9,when is payday this month,out_of_scope,escalate
+J10,my second monitor has stopped working,out_of_scope,escalate
+J11,something is wrong with my computer,ambiguous,escalate
+J12,it wont let me in,ambiguous,escalate

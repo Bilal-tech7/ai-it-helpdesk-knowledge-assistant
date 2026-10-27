@@ -141,3 +141,15 @@
 - **Pattern:** Vague questions get worse as the knowledge base grows, and a threshold does not fix it.
 - **Caveat:** The new test rows were written around the new sections, so they are easier than fresh questions.
 - **Next:** A fresh holdout that includes questions outside the five topics, then a mechanism for vague questions.
+
+## Evaluation 8: second holdout (27 Oct 2026)
+
+- **Setup:** 12 fresh questions written by my supervisor before any further changes, run once with all five topic guides (16 sections), threshold 0.25, gap rule off.
+- **Result:** 7 of 12 correct, 5 wrong answers served, 0 over-escalated.
+- **Covered questions:** 6 of 7 passed. J5 ("cant reach the intranet while working from my kitchen") went to office Wi-Fi instead of VPN, a plausible mistake.
+- **Out-of-scope and vague questions:** Only 1 of 5 escalated. Wrong answers scored 0.26 to 0.35, above the 0.25 threshold, so a confident wrong section was returned for email setup, a broken monitor, "something is wrong with my computer" and "it wont let me in".
+- **Against targets:** covered 86% (met), not-in-guide escalation 33% (missed), ambiguous 0% (missed).
+- **Finding:** The similarity score measures topic closeness, not whether a section answers the question. Wrong answers (up to 0.35) overlap with correct ones (as low as 0.40 to 0.45), so no single threshold separates them cleanly.
+- **Hypothesis, untested:** A higher threshold (about 0.35 to 0.40) would catch these but would also escalate some correct answers. Needs a fresh batch to test.
+- **Caveat:** Questions were written by someone who knew the guides, and the sample is small.
+- **Next:** Try a clarifying-question step for vague requests, and test a higher threshold on a new batch.
