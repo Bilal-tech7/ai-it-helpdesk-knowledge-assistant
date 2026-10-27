@@ -23,3 +23,8 @@ id,question,type,expected
 22,how do i get into the work system from home,covered,Connect to the VPN from home
 23,vpn keeps dropping every few minutes,covered,VPN not connecting or keeps disconnecting
 24,do i need vpn when im in the office,covered,Do I need the VPN in the office
+25,how to install the office work app,covered,Install approved software
+26,i cant open the finance system my team uses,covered,Request access to software or a system
+27,how do I connect to the printer,covered,Connect to the office printer
+28,printer says printed successfully but nothing comes out,covered,Print job stuck or printer not responding
+29,my laptop keeps switching off and wont start,covered,Laptop will not start or is very slow

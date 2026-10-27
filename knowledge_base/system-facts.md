@@ -20,3 +20,15 @@
 - VPN sign-in: work email and password, then an MFA approval in the Northwind Authenticator app
 - VPN not connecting: check internet access first, then quit and reopen the app, then restart the laptop
 - VPN keeps disconnecting: usually a weak home internet connection
+
+- Software Centre: app on every work laptop for installing approved software
+- Approved software examples: Zoom, Microsoft Office, Adobe Reader, Slack
+- Software not in the Software Centre: needs an access request ticket with manager approval
+- Access requests: raise a ticket through the helpdesk assistant, name the system and say why it is needed; manager approval is required; typical turnaround 2 working days
+- Office printers: one per floor, named Northwind-Print-Floor1 and so on; added from Settings on a work laptop
+- Printing: sign in at the printer with your staff card to release your print job
+- Print jobs stuck: cancel the job, restart the print queue by turning the printer off and on, then print again
+- Laptop will not start: hold the power button for 10 seconds, plug in the charger, wait 5 minutes, then try again
+- Laptop very slow: restart it, close unused apps, check free disk space
+- Hardware faults: raise a ticket; IT arranges a replacement or repair
+- Printer stuck: remove the printer in Settings and add it again before restarting the printer
