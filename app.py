@@ -1,4 +1,4 @@
-print("STEP 31 RUNNING")
+print("STEP 32 RUNNING")
 
 from flask import Flask, request, render_template_string
 from assistant import ask
@@ -26,7 +26,7 @@ IT will never ask for them.</p>
   {% else %}
     <h2>{{ result.title }}</h2>
     <p><em>Source: {{ result.source }} (match score {{ result.score }})</em></p>
-    <pre style="white-space: pre-wrap; font-family: inherit;">{{ result.text }}</pre>
+    <div>{{ result.html|safe }}</div>
   {% endif %}
 {% endif %}
 </body>

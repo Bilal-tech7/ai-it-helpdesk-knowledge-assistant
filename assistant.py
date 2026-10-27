@@ -1,5 +1,7 @@
 print("ASSISTANT MODULE LOADED")
 
+import re
+import markdown
 import glob
 import os
 from sentence_transformers import SentenceTransformer, util
@@ -23,6 +25,13 @@ for path in sorted(glob.glob("knowledge_base/*.md")):
 model = SentenceTransformer("all-MiniLM-L6-v2")
 chunk_vectors = model.encode(chunks)
 
+def to_html(text):
+    # drop the title line, since the page already shows it as a heading
+    body = text.split("\n", 1)[1] if "\n" in text else text
+    # Markdown needs a blank line before the first numbered step
+    body = re.sub(r"\n(\d+\. )", r"\n\n\1", body, count=1)
+    return markdown.markdown(body)
+
 def ask(question):
     scores = util.cos_sim(model.encode(question), chunk_vectors)[0]
     best = int(scores.argmax())
@@ -34,6 +43,6 @@ def ask(question):
         "kind": "answer",
         "title": titles[best],
         "source": sources[best],
-        "text": chunks[best],
+        "html": to_html(chunks[best]),
         "score": round(score, 2),
     }

@@ -153,3 +153,11 @@
 - **Hypothesis, untested:** A higher threshold (about 0.35 to 0.40) would catch these but would also escalate some correct answers. Needs a fresh batch to test.
 - **Caveat:** Questions were written by someone who knew the guides, and the sample is small.
 - **Next:** Try a clarifying-question step for vague requests, and test a higher threshold on a new batch.
+
+## Web interface (27 Oct 2026)
+
+- **Built:** A Flask page with a question box, cited answers, a "never share passwords" notice, and ticket creation when no reliable answer is found.
+- **Security check:** A question containing `<b>hello</b>` was shown as plain text, because Flask escapes user input.
+- **Observed limit:** Junk input still creates tickets. Rate limiting and duplicate detection are future work.
+- **Note for the dashboard:** Ticket text is user-written, so it must be escaped when displayed to staff.
+- **Formatting:** Guide text is converted from Markdown to HTML and marked safe, which is only acceptable because the guides are written by the project owner.
