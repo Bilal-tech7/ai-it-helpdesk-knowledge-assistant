@@ -1,7 +1,8 @@
-print("STEP 32 RUNNING")
+print("STEP 33 RUNNING")
 
 from flask import Flask, request, render_template_string
 from assistant import ask
+from experiments.tickets import list_tickets
 
 app = Flask(__name__)
 
@@ -32,6 +33,26 @@ IT will never ask for them.</p>
 </body>
 """
 
+TICKETS_PAGE = """
+<!doctype html>
+<title>Ticket dashboard</title>
+<body style="font-family: sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+<h1>Ticket dashboard</h1>
+<p><a href="/">Back to the assistant</a></p>
+<table border="1" cellpadding="6" style="border-collapse: collapse; width: 100%;">
+  <tr><th>ID</th><th>Question</th><th>Status</th><th>Created (UTC)</th></tr>
+  {% for t in tickets %}
+  <tr>
+    <td>{{ t[0] }}</td>
+    <td>{{ t[1] }}</td>
+    <td>{{ t[2] }}</td>
+    <td>{{ t[3] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+"""
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     result = None
@@ -41,6 +62,10 @@ def home():
         if question:
             result = ask(question)
     return render_template_string(PAGE, result=result, question=question)
+
+@app.route("/tickets")
+def tickets():
+    return render_template_string(TICKETS_PAGE, tickets=list_tickets())
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
