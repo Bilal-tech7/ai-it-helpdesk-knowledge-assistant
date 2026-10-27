@@ -120,3 +120,13 @@
 - **Limit:** "Summer2026 is my password" still slips through, and a random string typed alone would too. A word list will always be incomplete.
 - **Trade-off:** Too aggressive damages the ticket's meaning, and too loose lets secrets through.
 - **Next:** Warn users in the interface not to share passwords, since filtering alone does not prevent it.
+
+## Evaluation 6: VPN guide added (27 Oct 2026)
+
+- **Change:** Added a VPN guide (3 sections), so the knowledge base has 11 sections. Row 7 was relabelled from escalate to its VPN section because the guide now exists, not because of a result. Rows 22 to 24 were added.
+- **Result:** 20 of 24 correct (83%), 4 wrong answers served, 0 over-escalated (gap rule off).
+- **Regression check:** No Wi-Fi or password question that passed before now fails.
+- **Remaining failures:** #5 (missing section), #10 and #11 (overlapping password sections, #11's label is debatable), #18 (vague question).
+- **Against targets:** covered 89% (met), not-in-guide escalation 50% (missed, only two questions), ambiguous 50% (missed).
+- **Caveat:** The VPN section titles and test rows were written together, so the new passes are easier than fresh questions would be.
+- **Next:** Write the software and printing guides, then test on a fresh batch of questions.
