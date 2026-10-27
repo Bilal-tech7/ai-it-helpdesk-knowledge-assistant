@@ -5,7 +5,7 @@ from sentence_transformers import SentenceTransformer, util
 
 THRESHOLD = 0.25
 GAP_MIN = 0.0
-TEST_FILE = "tests/holdout_2.csv"
+TEST_FILE = "tests/test_questions.csv"
 import glob
 
 chunks = []
