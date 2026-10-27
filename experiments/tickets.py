@@ -1,4 +1,5 @@
 import sqlite3
+import re
 
 DB_FILE = "tickets.db"
 
@@ -14,7 +15,17 @@ def _connect():
     """)
     return conn
 
+def redact(text):
+    return re.sub(
+        r"\b(password|passcode|pin|code)\s*(?:(?:is|its|it's)\b|[:=])\s*"
+        r"(?!(?:not|working|wrong|incorrect|expired|locked|invalid|correct|too|very|weak|easy|about|the|a|an)\b)\S+",
+        r"\1 [removed]",
+        text,
+        flags=re.IGNORECASE,
+    )
+
 def create_ticket(question):
+    question = redact(question)
     conn = _connect()
     cur = conn.execute("INSERT INTO tickets (question) VALUES (?)", (question,))
     conn.commit()

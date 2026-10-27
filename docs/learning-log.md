@@ -110,3 +110,13 @@
 - **Decision:** Set GAP_MIN = 0.0 by default. This decision was made after seeing the holdout, so that holdout is now used and any further tuning needs fresh questions.
 - **Open problem:** Vague questions ("my account is broken", "cant sign in") land on the lockout section. Needs a different mechanism, such as asking a clarifying question.
 - **Caveat:** Only 8 questions, written by someone who knew the guides.
+
+## Ticket storage and redaction (27 Oct 2026)
+
+- **Problem:** Escalated questions are saved as tickets, so a pasted password would be stored in the database.
+- **First version:** A pattern that removed the word after "password is". It mangled "my password is not working" into "my password [removed] working", which nearly reverses the meaning.
+- **Fix:** Stopped matching "isn't", and excluded common non-secret words such as "not" and "working".
+- **Result:** Common patterns are redacted and harmless sentences are untouched.
+- **Limit:** "Summer2026 is my password" still slips through, and a random string typed alone would too. A word list will always be incomplete.
+- **Trade-off:** Too aggressive damages the ticket's meaning, and too loose lets secrets through.
+- **Next:** Warn users in the interface not to share passwords, since filtering alone does not prevent it.
