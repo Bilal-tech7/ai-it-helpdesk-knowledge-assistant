@@ -5,7 +5,7 @@ id,question,type,expected
 4,What's the best pizza in Sydney,out_of_scope,escalate
 5,How do I set up MFA on a second phone,covered_gap,escalate
 6,How do I change my password before it expires,covered,Change your password before it expires
-7,My VPN won't connect,out_of_scope,escalate
+7,My VPN won't connect,covered,VPN not connecting or keeps disconnecting
 8,It's not working,ambiguous,escalate
 9,I need to update my password and I still know the old one,covered,Change your password before it expires
 10,My password is about to run out,covered,Change your password before it expires
@@ -20,3 +20,6 @@ id,question,type,expected
 19,my laptop wont join the company network,covered,Connect to office Wi-Fi
 20,connected but pages wont load or network is not working or slowing down,covered,Wi-Fi connected but no internet or keeps dropping
 21,"a client is visiting today, how can they get online",covered,Connect a visitor to guest Wi-Fi
+22,how do i get into the work system from home,covered,Connect to the VPN from home
+23,vpn keeps dropping every few minutes,covered,VPN not connecting or keeps disconnecting
+24,do i need vpn when im in the office,covered,Do I need the VPN in the office

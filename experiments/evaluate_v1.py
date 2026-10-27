@@ -1,11 +1,11 @@
-print("STEP 22 RUNNING")
+print("STEP  RUNNING")
 
 import csv
 from sentence_transformers import SentenceTransformer, util
 
 THRESHOLD = 0.25
 GAP_MIN = 0.0
-TEST_FILE = "tests/holdout_questions.csv"
+TEST_FILE = "tests/test_questions.csv"
 import glob
 
 chunks = []

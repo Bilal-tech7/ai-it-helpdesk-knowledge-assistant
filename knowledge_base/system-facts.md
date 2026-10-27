@@ -14,3 +14,9 @@
 - Wi-Fi not connecting: turn Wi-Fi off and on, forget the network and reconnect, then restart the device
 - Wi-Fi speed or drops: move closer to an access point, then raise a ticket if it continues
 - Guest Wi-Fi: reception provides a daily code
+
+- VPN app: Northwind VPN, installed on work laptops
+- VPN is needed when working remotely to reach internal systems; it is not needed in the office
+- VPN sign-in: work email and password, then an MFA approval in the Northwind Authenticator app
+- VPN not connecting: check internet access first, then quit and reopen the app, then restart the laptop
+- VPN keeps disconnecting: usually a weak home internet connection
