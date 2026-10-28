@@ -4,6 +4,12 @@ A prototype helpdesk assistant for a fictional company (Northwind Logistics). Em
 
 I built this after repeatedly running into support chatbots that loop through the same options, or that understand the problem and then never connect you to a person. I wanted to find out how a helpdesk assistant could answer only from approved guides, avoid guessing, and hand over to a human through a trackable ticket when it cannot help. It is a learning project, built with guidance from an AI assistant (Claude), which drafted some of the guides and test questions that I reviewed and edited.
 
+## Demo
+
+A 45-second walkthrough: asking a question, getting a cited answer, escalating an uncovered question to a ticket, and changing its status.
+
+PASTE-THE-GITHUB-LINK-HERE 
+
 ## Screenshots
 
 An answer, with its source:
