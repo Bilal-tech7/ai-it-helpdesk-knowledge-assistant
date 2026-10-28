@@ -1,3 +1,4 @@
 venv/
 tickets.db
+tickets-old.db
 __pycache__/
