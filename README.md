@@ -93,7 +93,7 @@ Requires Python 3.13 or similar.
     pip install -r requirements.txt
     python app.py
 
-Then open http://127.0.0.1:5000. The first run downloads the embedding model (about 90 MB). The ticket dashboard is at /tickets.
+Then open http://127.0.0.1:5000 in your browser. This address only works on your own computer while the app is running. The first run downloads the embedding model (about 90 MB). The ticket dashboard is at /tickets.
 
 To run the evaluation:
 
