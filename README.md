@@ -8,7 +8,7 @@ I built this after repeatedly running into support chatbots that loop through th
 
 - Searches 16 sections across five guides: password and MFA, Wi-Fi, VPN, software installation, and printing and hardware.
 - Uses meaning-based search (sentence embeddings), so "I can't get online" can match a Wi-Fi guide without sharing words.
-- Shows the source file and a match score with every answer.
+- Shows the source file with every answer, and the similarity score in a collapsed       "Technical details" section.
 - Escalates to a ticket when the best match scores below a threshold (0.25).
 - Removes obvious secrets (for example "password is ...") before saving a ticket.
 - Includes a ticket dashboard where staff can change a ticket's status (New, In progress, Resolved).
