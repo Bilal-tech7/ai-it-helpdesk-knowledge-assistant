@@ -4,11 +4,25 @@ A prototype helpdesk assistant for a fictional company (Northwind Logistics). Em
 
 I built this after repeatedly running into support chatbots that loop through the same options, or that understand the problem and then never connect you to a person. I wanted to find out how a helpdesk assistant could answer only from approved guides, avoid guessing, and hand over to a human through a trackable ticket when it cannot help. It is a learning project, built with guidance from an AI assistant (Claude), which drafted some of the guides and test questions that I reviewed and edited.
 
+## Screenshots
+
+An answer, with its source:
+
+![An answer with its source](docs/screenshots/answer.png)
+
+A ticket raised when no reliable answer exists:
+
+![A ticket raised when no reliable answer exists](docs/screenshots/ticket-created.png)
+
+The ticket dashboard. Tickets 6 to 8 are a test of HTML escaping: the text is shown as typed.
+
+![The ticket dashboard](docs/screenshots/dashboard.png)
+
 ## What it does
 
 - Searches 16 sections across five guides: password and MFA, Wi-Fi, VPN, software installation, and printing and hardware.
 - Uses meaning-based search (sentence embeddings), so "I can't get online" can match a Wi-Fi guide without sharing words.
-- Shows the source file with every answer, and the similarity score in a collapsed       "Technical details" section.
+- Shows the source file with every answer, and the similarity score in a collapsed "Technical details" section.
 - Escalates to a ticket when the best match scores below a threshold (0.25).
 - Removes obvious secrets (for example "password is ...") before saving a ticket.
 - Includes a ticket dashboard where staff can change a ticket's status (New, In progress, Resolved).
@@ -25,6 +39,22 @@ I built this after repeatedly running into support chatbots that loop through th
 2. Each section is converted to an embedding with `all-MiniLM-L6-v2`.
 3. A question is converted the same way, and the closest section is found by cosine similarity.
 4. If the score is at least 0.25, the section is shown. Otherwise a ticket is created in SQLite.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    U[Employee] -->|types a question| W[Web page<br/>app.py]
+    W -->|question| A[Search<br/>assistant.py]
+    KB[(Guides<br/>knowledge_base)] -->|split into sections,<br/>embedded at startup| A
+    A -->|score at least 0.25| R[Show section<br/>with source]
+    A -->|score below 0.25| T[Create ticket<br/>tickets.py]
+    T -->|redact secrets,<br/>save| DB[(SQLite<br/>tickets.db)]
+    R --> U
+    T -->|ticket number| U
+    S[IT staff] -->|view and change status| D[Ticket dashboard<br/>app.py /tickets]
+    D <--> DB
+```
 
 ## Evaluation
 
@@ -47,7 +77,7 @@ What surprised me most was how an embedding search can look confident and still 
 
 ## Limitations
 
-- The test questions were written by me and my supervisor, who knew the guides, so they are easier than questions from real users. The sample sizes are small, so percentages are indicative only.
+- The test questions were written by me with help from an AI assistant that knew the guides, so they are easier than questions from real users. The sample sizes are small, so percentages are indicative only.
 - Real company IT procedures are confidential, so the guides are original demonstration content for a fictional organisation. Results show the technique works, not that it fits any specific company.
 - The ticket dashboard has no login and no protection against forged requests (CSRF). Anyone who can reach it can read and change tickets.
 - Junk questions create tickets, and there is no duplicate detection or rate limiting.
@@ -74,10 +104,9 @@ To run the evaluation:
 - `knowledge_base/`: the guides and a facts sheet
 - `tests/`: test questions with expected outcomes
 - `experiments/`: evaluation script, ticket functions, and the earlier experiments
-- `docs/`: project scope and a learning log
+- `docs/`: project scope, learning log and screenshots
 - `app.py`, `assistant.py`: the web app and the search
 
 ## Evidence and scope
 
 See `docs/scope.md` for the problem statement, evidence sources and success measures, and `docs/learning-log.md` for what I tried and learned at each step.
-
