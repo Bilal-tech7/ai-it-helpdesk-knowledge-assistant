@@ -1,4 +1,4 @@
-print("STEP 29 RUNNING")
+print("STEP 36 RUNNING")
 
 import csv
 from sentence_transformers import SentenceTransformer, util

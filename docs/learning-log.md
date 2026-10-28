@@ -171,3 +171,12 @@
 - **Limitation 3:** Junk input creates tickets, and there is no duplicate detection or rate limiting.
 - **Limitation 4:** Timestamps are stored in UTC and shown as UTC.
 - **Next:** Safety tests, a comparison against a plain FAQ search, and packaging the project for GitHub.
+
+## Observed in the web interface: punctuation sensitivity (28 Oct 2026)
+
+- **Observation:** "when is payday this month." (with a trailing full stop) returned the software access section, while the same question without it escalated to a ticket.
+- **Result:** The score for the version with the full stop was 0.25, exactly on the threshold, so it was answered. The version without it scored 0.21 and escalated. One character moved the score by about 0.04.
+- **Test rows 30 and 31:** "when is payday this month" scored 0.21 and escalated correctly, and the same question with a trailing full stop scored 0.25 and returned the software access section. This matches what I saw in the web interface. The main set is now 25 of 31 correct, 6 wrong answers served, 0 over-escalated.
+- **Why it matters:** Questions that score near the threshold can flip with trivial changes in wording, so results near 0.25 are fragile.
+- **Action:** Added both versions to the test set to measure the effect. Did not change the code or the threshold, because the holdout sets have already been seen.
+- **Possible fix, untested:** Normalise the question (remove trailing punctuation) before searching.

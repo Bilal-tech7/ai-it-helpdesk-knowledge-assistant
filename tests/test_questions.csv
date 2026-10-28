@@ -28,3 +28,5 @@ id,question,type,expected
 27,how do I connect to the printer,covered,Connect to the office printer
 28,printer says printed successfully but nothing comes out,covered,Print job stuck or printer not responding
 29,my laptop keeps switching off and wont start,covered,Laptop will not start or is very slow
+30,when is payday this month,out_of_scope,escalate
+31,when is payday this month.,out_of_scope,escalate

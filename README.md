@@ -32,7 +32,7 @@ I measured the assistant on written test questions with expected outcomes (a sec
 
 | Test set | Questions | Correct | Wrong answer served | Over-escalated |
 |---|---|---|---|---|
-| Main set | 29 | 24 | 5 | 0 |
+| Main set | 31 | 25 | 6 | 0 |
 | Fresh holdout (written after the knowledge base was complete) | 12 | 7 | 5 | 0 |
 
 Findings:
@@ -41,6 +41,7 @@ Findings:
 - The similarity score measures how related a section is to a question, not whether the section answers it, so a single threshold cannot separate right from wrong.
 - A gap rule (escalate when the top two scores are close) helped on the tuning set but did not generalise to fresh questions, so it is switched off.
 - Adding a guide can break questions that used to work. For example, "My VPN won't connect" returned Wi-Fi steps until a VPN guide was written, and adding a printing guide made a vague question match it. The whole test set must be re-run after every change.
+- Questions near the threshold are fragile. "when is payday this month" escalated (score 0.21), but the same question with a trailing full stop scored 0.25 and returned a confident wrong answer.
 
 What surprised me most was how an embedding search can look confident and still be wrong. The assistant never makes up an answer, because it always returns the closest section of a guide, but for questions it should hand to a human, such as "my second monitor has stopped working" or "it won't let me in", the closest section still scored above my threshold, so it served a confident wrong answer. The threshold caught obvious cases like pizza, but not these near-misses, and I measured that instead of assuming it was fixed. Next I would try asking a clarifying question for vague requests, and checking whether the retrieved section really answers the question before showing it.
 
@@ -79,3 +80,4 @@ To run the evaluation:
 ## Evidence and scope
 
 See `docs/scope.md` for the problem statement, evidence sources and success measures, and `docs/learning-log.md` for what I tried and learned at each step.
+
