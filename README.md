@@ -112,6 +112,13 @@ To run the evaluation:
 - `docs/`: project scope, learning log and screenshots
 - `app.py`, `assistant.py`: the web app and the search
 
+## Not done yet
+
+- **Comparison with a plain keyword/FAQ search.** My scope planned this value check, but I have not run it. An early keyword retriever (in `experiments/`) failed on reworded questions, but it was not compared on the final test set.
+- **Automated test that the assistant never repeats sensitive data.** Secret redaction was checked by hand on a few inputs, but it is not part of the test set.
+- **Clarifying questions for vague requests.** My evaluation shows this is the main weakness. It is untested.
+- **Employee interview in a corporate setting.** Not completed.
+
 ## Evidence and scope
 
 See `docs/scope.md` for the problem statement, evidence sources and success measures, and `docs/learning-log.md` for what I tried and learned at each step.
