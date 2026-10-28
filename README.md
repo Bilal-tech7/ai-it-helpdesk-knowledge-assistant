@@ -6,9 +6,8 @@ I built this after repeatedly running into support chatbots that loop through th
 
 ## Demo
 
-A 45-second walkthrough: asking a question, getting a cited answer, escalating an uncovered question to a ticket, and changing its status.
-
-PASTE-THE-GITHUB-LINK-HERE 
+A 50-second walkthrough: asking a question, getting a cited answer, escalating an uncovered question to a ticket, and changing its status.
+https://github.com/user-attachments/assets/0892f25c-3df4-458e-813f-ff4d5aaef318
 
 ## Screenshots
 
