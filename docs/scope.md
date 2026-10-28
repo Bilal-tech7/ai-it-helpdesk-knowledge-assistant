@@ -30,6 +30,7 @@ Evidence strength: password/login/MFA is supported by every source reviewed; sof
 
 ## 5. Success measures
 **Status (28 Oct 2026):** The value check against a plain FAQ search and the automated sensitive-data test were not completed. See "Not done yet" in the README.
+
 Measured using a test set of 30-50 questions (covered, ambiguous and out-of-scope).
 Targets are provisional and will be revised after the first test run.
 
